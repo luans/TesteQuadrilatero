@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.quad</groupId>
+    <artifactId>quad-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+	<modules>
+		<module>quad-web</module>
+	</modules>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-dependency-plugin</artifactId>
+                                    <versionRange>[1.0.0,)</versionRange>
+                                    <goals>
+                                        <goal>copy-dependencies</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <ignore />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Java EE 7 (Servlet 3.1, JAX-RS 2.0, Jackson 1.9) -->
+            <dependency>
+                <groupId>org.jboss.spec.javax.servlet</groupId>
+                <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec.javax.ws.rs</groupId>
+                <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-jaxrs</artifactId>
+                <version>1.9.13</version>
+            </dependency>
+
+            <!-- Java EE 7 (EJB 3.2, JTA 1.2, JPA 2.1, Hibernate 4) -->
+            <dependency>
+                <groupId>org.jboss.spec.javax.ejb</groupId>
+                <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec.javax.transaction</groupId>
+                <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>4.3.10.Final</version>
+            </dependency>
+
+            <!-- Utils -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.4</version>
+            </dependency>
+
+            <!-- Project -->
+            <dependency>
+                <groupId>br.com.quad</groupId>
+                <artifactId>quad-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+			
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.2</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
